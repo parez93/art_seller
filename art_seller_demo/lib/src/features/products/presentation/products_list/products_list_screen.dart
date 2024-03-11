@@ -16,7 +16,6 @@ class ProductsListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       // appBar: HomeAppBar(),
-      bottomNavigationBar: HomeBottomNavBar(),
       body: BorderScaffold(
         child: SafeArea(
           child: SingleChildScrollView(
