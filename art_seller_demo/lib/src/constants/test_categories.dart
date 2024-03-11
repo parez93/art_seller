@@ -1,0 +1,1 @@
+const kTestCategories = ["Sculpture", "Porcelain", "Art", "Furniture"];

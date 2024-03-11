@@ -1,0 +1,23 @@
+{
+  "appTitle": "art_seller_demo",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
+
+  "product_list_title": "Greek fine Art\nSchool",
+  "product_list_live": "Live",
+  "product_list_auction": "Aution",
+  "product_list_new_arrival": "New arrivals",
+  "product_list_upcoming": "Upcoming",
+  "product_list_recomended": "Recommended",
+
+  "produt_estimate": "Estimate",
+  "produt_current_bid": "Current bid",
+
+  "bot_nav_bar_explore": "Explore",
+  "bot_nav_bar_search": "Search",
+  "bot_nav_bar_profile": "Profile",
+
+  "error_screen_title": "Page not found!",
+  "error_screen_button": "Go Home"
+}
