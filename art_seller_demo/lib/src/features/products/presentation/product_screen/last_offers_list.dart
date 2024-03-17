@@ -1,12 +1,15 @@
+import 'package:art_seller_demo/src/common_widgets/alert_dialog.dart';
 import 'package:art_seller_demo/src/common_widgets/cached_circle_avatar.dart';
 import 'package:art_seller_demo/src/constants/app_sizes.dart';
 import 'package:art_seller_demo/src/features/products/domain/offer.dart';
 import 'package:art_seller_demo/src/features/products/domain/product.dart';
 import 'package:art_seller_demo/src/features/products/presentation/live_auction_ripple/live_auction_ripple.dart';
+import 'package:art_seller_demo/src/routing/app_router.dart';
 import 'package:art_seller_demo/src/utils/app_localizations_context.dart';
 import 'package:art_seller_demo/src/utils/app_theme_context.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 class LastOffersList extends StatelessWidget {
@@ -97,25 +100,19 @@ class LastOffersList extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () => showDialog<String>(
-                    context: context,
-                    builder: (BuildContext context) => AlertDialog(
-                      title: const Text('Not implemented feature'),
-                      content: const Text('This feature is not implemented yet. See you next meetup!'),
-                      actions: <Widget>[
-                        TextButton(
-                          onPressed: () {
-                          },
-                          child: const Text('Cancel'),
-                        ),
-                        TextButton(
-                          onPressed: () {
-                          },
-                          child: const Text('OK'),
-                        ),
-                      ],
-                    ),
-                  ),
+                  onPressed: () async {
+                    final ok = await showAlertDialog(
+                        title: 'Not implemented feature',
+                        context: context,
+                        cancelActionText: 'Cancel',
+                        defaultActionText: 'OK',
+                        content:
+                            'This feature is not implemented yet. See you next meetup!');
+                    if (ok == true) {
+                      context.goNamed(AppRoute.notImplemented.name);
+                      // context.pushNamed(AppRoute.notImplemented.name);
+                    }
+                  },
                   style: ButtonStyle(
                     backgroundColor:
                         MaterialStateProperty.all(context.colorTheme.primary),

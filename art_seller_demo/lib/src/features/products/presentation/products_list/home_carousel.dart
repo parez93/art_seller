@@ -3,10 +3,12 @@ import 'package:art_seller_demo/src/features/products/domain/product.dart';
 import 'package:art_seller_demo/src/features/products/presentation/live_auction_ripple/live_auction_ripple.dart';
 import 'package:art_seller_demo/src/features/products/presentation/meta_tags/meta_tags.dart';
 import 'package:art_seller_demo/src/features/products/presentation/product_screen/product_screen.dart';
+import 'package:art_seller_demo/src/routing/app_router.dart';
 import 'package:art_seller_demo/src/utils/app_localizations_context.dart';
 import 'package:art_seller_demo/src/utils/app_theme_context.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomeCarousel extends StatelessWidget {
@@ -32,12 +34,13 @@ class HomeCarousel extends StatelessWidget {
               final product = products[index];
               return InkWell(
                 onTap: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute<void>(
-                      builder: (BuildContext context) =>
-                          ProductScreen(productId: product.id),
-                    ),
-                  );
+                  // Navigator.of(context).push(
+                  //   MaterialPageRoute<void>(
+                  //     builder: (BuildContext context) =>
+                  //         ProductScreen(productId: product.id),
+                  //   ),
+                  // );
+                  context.goNamed(AppRoute.product.name, pathParameters: {'id': product.id});
                 },
                 child: Container(
                   margin: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
