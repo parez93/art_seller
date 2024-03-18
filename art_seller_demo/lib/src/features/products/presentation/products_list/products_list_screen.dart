@@ -1,11 +1,14 @@
+import 'package:art_seller_demo/src/common_widgets/async_value_widget.dart';
 import 'package:art_seller_demo/src/common_widgets/border_scaffold.dart';
 import 'package:art_seller_demo/src/constants/app_sizes.dart';
 import 'package:art_seller_demo/src/constants/test_products.dart';
+import 'package:art_seller_demo/src/features/products/data/fake_product_repository.dart';
+import 'package:art_seller_demo/src/features/products/domain/product.dart';
 import 'package:art_seller_demo/src/features/products/presentation/products_list/home_app_bar.dart';
 import 'package:art_seller_demo/src/features/products/presentation/products_list/home_sugggestions.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'home_bottom_nav_bar.dart';
 import 'home_carousel.dart';
 import 'home_categories_list.dart';
 
@@ -26,9 +29,29 @@ class ProductsListScreen extends StatelessWidget {
                   gapH32,
                   HomeCategoriesList(),
                   gapH32,
-                  HomeCarousel(products: kTestProducts.sublist(0, 5)),
+                  Consumer(
+                    builder:
+                        (BuildContext context, WidgetRef ref, Widget? child) {
+                      final productsAsync =
+                          ref.watch(productListFutureProvider);
+                      return AsyncValueWidget<List<Product>>(
+                        value: productsAsync,
+                        data: (products) => HomeCarousel(products: products),
+                      );
+                    },
+                  ),
                   gapH32,
-                  HomeSuggestions(products: kTestProducts.sublist(6, 9)),
+                  Consumer(
+                    builder:
+                        (BuildContext context, WidgetRef ref, Widget? child) {
+                      final productsAsync =
+                          ref.watch(newArrivalProductListFutureProvider);
+                      return AsyncValueWidget<List<Product>>(
+                          value: productsAsync,
+                          data: (products) =>
+                              HomeSuggestions(products: products));
+                    },
+                  ),
                 ],
               ),
             ),
@@ -38,9 +61,3 @@ class ProductsListScreen extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-

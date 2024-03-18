@@ -17,7 +17,7 @@ class HomeSuggestions extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-          height: Sizes.p20,
+          height: Sizes.p24,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
