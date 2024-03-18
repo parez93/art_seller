@@ -5,6 +5,7 @@ import 'package:art_seller_demo/src/constants/test_products.dart';
 import 'package:art_seller_demo/src/features/products/data/fake_product_repository.dart';
 import 'package:art_seller_demo/src/features/products/domain/product.dart';
 import 'package:art_seller_demo/src/features/products/presentation/products_list/home_app_bar.dart';
+import 'package:art_seller_demo/src/features/products/presentation/products_list/home_carousel_shimmer.dart';
 import 'package:art_seller_demo/src/features/products/presentation/products_list/home_sugggestions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -37,6 +38,7 @@ class ProductsListScreen extends StatelessWidget {
                       return AsyncValueWidget<List<Product>>(
                         value: productsAsync,
                         data: (products) => HomeCarousel(products: products),
+                        loading: HomeCarouselShimmer(),
                       );
                     },
                   ),
